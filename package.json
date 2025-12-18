@@ -17,12 +17,12 @@ app.use(
   })
 );
 
-//DADOS EM MEMÓRIA 
+// ====== DADOS EM MEMÓRIA ======
 let interessados = [];
 let pets = [];
 let adocoes = [];
 
-// LOGIN
+// ====== LOGIN ======
 app.get("/", (req, res) => {
   res.send(`
     <h1>Login</h1>
@@ -51,13 +51,13 @@ app.get("/logout", (req, res) => {
   res.redirect("/");
 });
 
-// MIDDLEWARE 
+// ====== MIDDLEWARE ======
 function auth(req, res, next) {
   if (req.session.logado) return next();
   res.redirect("/");
 }
 
-// MENU 
+// ====== MENU ======
 app.get("/menu", auth, (req, res) => {
   res.send(`
     <h1>Menu</h1>
@@ -70,7 +70,7 @@ app.get("/menu", auth, (req, res) => {
   `);
 });
 
-// INTERESSADOS 
+// ====== INTERESSADOS ======
 app.get("/cadastro-interessado", auth, (req, res) => {
   res.send(`
     <h1>Cadastrar Interessado</h1>
@@ -106,7 +106,7 @@ app.get("/lista-interessados", auth, (req, res) => {
   res.send(html);
 });
 
-// PETS 
+// ====== PETS ======
 app.get("/cadastro-pet", auth, (req, res) => {
   res.send(`
     <h1>Cadastrar Pet</h1>
@@ -142,7 +142,7 @@ app.get("/lista-pets", auth, (req, res) => {
   res.send(html);
 });
 
-// ADOÇÃO
+// ====== ADOÇÃO ======
 app.get("/adotar", auth, (req, res) => {
   if (interessados.length === 0 || pets.length === 0) {
     return res.send("Cadastre interessados e pets antes!<br><a href='/menu'>Menu</a>");
@@ -197,5 +197,5 @@ app.post("/adotar", auth, (req, res) => {
   res.send(html);
 });
 
-
+// ====== EXPORT PARA VERCEL ======
 module.exports = app;
