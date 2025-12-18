@@ -199,3 +199,11 @@ app.post("/adotar", auth, (req, res) => {
 
 
 module.exports = app;
+
+// LOCALHOST
+if (require.main === module) {
+  const PORT = 3000;
+  app.listen(PORT, () => {
+    console.log(`Servidor rodando em http://localhost:${PORT}`);
+  });
+}
