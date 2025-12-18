@@ -13,7 +13,7 @@ app.use(
     secret: "petshop",
     resave: false,
     saveUninitialized: true,
-    cookie:oring { maxAge: 30 * 60 * 1000 } // 30 minutos
+    cookie: { maxAge: 30 * 60 * 1000 } // 30 minutos
   })
 );
 
