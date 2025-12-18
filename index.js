@@ -1,3 +1,6 @@
+//Programado pro Luiz Fernando Olivetti Albieri Zanon
+//RA 1044.25.1960-4
+
 const express = require("express");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
